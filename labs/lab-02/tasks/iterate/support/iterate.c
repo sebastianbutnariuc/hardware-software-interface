@@ -7,7 +7,7 @@
 
 void print_chars(void)
 {
-	unsigned char* p = v;
+	unsigned char* p = (unsigned char *) v;
 
 	for (int i = 0; i < 20; i++, p++) {
 		printf("%p -> 0x%x\n", p, *p);
@@ -18,7 +18,7 @@ void print_chars(void)
 
 void print_shorts(void)
 {
-	unsigned short* p = v;
+	unsigned short* p = (unsigned short *) v;
 
 	for (int i = 0; i < 10; i++, p++) {
 		printf("%p -> 0x%x\n", p, *p);
