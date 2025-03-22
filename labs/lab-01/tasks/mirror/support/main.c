@@ -8,7 +8,12 @@
 
 int main(void)
 {
-	/* TODO: Test function */
+	char s[] = "Little-Endian";
+
+	mirror(s);
+
+	printf("%s\n", s);
+	printf("%s\n", s + 7);
 
 	return 0;
 }
