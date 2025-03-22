@@ -2,7 +2,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 
 /* checks if the array is sorted */
 static int is_sorted(int a[], int n)
@@ -21,11 +20,10 @@ static void shuffle(int a[], int n)
 {
 	int i;
 	int t, r;
-	unsigned int seed = time(NULL);
 
 	for (i = 0; i < n; i++) {
 		t = a[i];
-		r = rand_r(&seed) % n;
+		r = rand_r() % n;
 		a[i] = a[r];
 		a[r] = t;
 	}
@@ -33,19 +31,18 @@ static void shuffle(int a[], int n)
 
 int main(void)
 {
-	int numbers[] = {1, 13, 2,  5};
-	int len = sizeof(numbers) / sizeof(*numbers);
+	int numbers[] = {1, 13, 2,  5, 3, -7};
 	int i;
 
 	while (1) {
-		shuffle(numbers, len);
+		shuffle(numbers, 6);
 
-		if (is_sorted(numbers, len))
+		if (is_sorted(numbers, 6))
 			/* TODO: Use goto instead of break */
 			break;
 	}
 
-	for (i = 0; i < len; i++)
+	for (i = 0; i < 6; i++)
 		printf("%d ", numbers[i]);
 	printf("\n");
 
