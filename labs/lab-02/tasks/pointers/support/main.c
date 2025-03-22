@@ -7,6 +7,15 @@
 
 #include "pointers.h"
 
+static int test_memcpy_overlap(void)
+{
+	char buffer[] = "abcdefghij";
+
+	my_memcpy(buffer + 2, buffer, 5);
+
+	return strncmp(buffer, "ababcdehij", 10) == 0 ? 1 : 0;
+}
+
 int main(void)
 {
 	char s1[] = "Abracadabra";
@@ -32,6 +41,7 @@ int main(void)
 	/* assert(SIGN(my_strcmp(s1, s2)) == SIGN(strcmp(s1, s2))); */
 	/* assert(my_strcpy(dest_str, src) && !strcmp(dest_str, src)); */
 	/* assert(my_memcpy(dest_mem, src, sizeof(src)) && !memcmp(dest_mem, src, sizeof(src))); */
+	test_memcpy_overlap();
 
 	free(dest_str);
 	free(dest_mem);

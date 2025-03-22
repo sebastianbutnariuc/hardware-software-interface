@@ -10,8 +10,33 @@ int binary_search(int *v, int len, int dest)
 	int end = len - 1;
 	int middle;
 
-	/**
-	 * TODO: Implement binary search
-	 */
+	start:
+
+	if (end < start) {
+		goto end;
+	}
+	middle = (start + end) / 2;
+	if (v[middle] > dest) {
+		goto before;
+	}
+	if (v[middle] < dest) {
+		goto after;
+	}
+	if (v[middle] == dest) {
+		return middle;
+	}
+
+	after:
+
+	start = middle + 1;
+	goto start;
+
+	before:
+
+	end = middle - 1;
+	goto start;
+
+	end:
+
 	return -1;
 }
