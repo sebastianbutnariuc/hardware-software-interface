@@ -8,12 +8,17 @@
 
 char *delete_first(char *s, char *pattern)
 {
-	/**
-	 * TODO: Implement this function
-	 */
+	char* p = strstr(s, pattern);
 
-	(void) s;
-	(void) pattern;
+	if (!p) {
+		return strdup(s);
+	}
 
-	return NULL;
+	char* copy = strdup(s);
+
+	copy[p - s] = '\0';
+	p = strdup(p + strlen(pattern));
+	strcat(copy, p);
+
+	return copy;
 }
