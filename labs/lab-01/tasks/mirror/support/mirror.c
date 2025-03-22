@@ -8,6 +8,11 @@
 
 void mirror(char *s)
 {
-	/* TODO */
-	(void) s;
+	size_t length = strlen(s);
+
+	for (size_t i = 0; i < (length) / 2; i++) {
+		*(s + length - i - 1) = (*(s + i)) ^ (*(s + length - i - 1));
+		*(s + i) = (*(s + i)) ^ (*(s + length - i - 1));
+		*(s + length - i - 1) = (*(s + i)) ^ (*(s + length - i - 1));
+	}
 }

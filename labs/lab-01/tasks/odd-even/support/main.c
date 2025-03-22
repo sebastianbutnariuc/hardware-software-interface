@@ -7,7 +7,8 @@
 
 int main(void)
 {
-	/* TODO: Test functions */
+	int i = 214;
+	print_binary(i, 8);
 
 	return 0;
 }

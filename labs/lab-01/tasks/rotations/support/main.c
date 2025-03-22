@@ -6,7 +6,9 @@
 
 int main(void)
 {
-	/* TODO: Test functions */
+	unsigned int x = 17;
 
+	rotate_right(&x, 2);
+	rotate_left(&x, 3);
 	return 0;
 }
