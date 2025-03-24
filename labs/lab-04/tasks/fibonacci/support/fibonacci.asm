@@ -15,4 +15,26 @@ main:
 
     ; TODO: calculate the N-th fibonacci number (f(0) = 0, f(1) = 1)
 
+    cmp ecx, 0
+    jz one
+
+    mov eax, 1
+    mov ebx, 1
+    dec ecx
+    
+fibo:
+    mov edx, eax
+    add eax, ebx  
+    mov ebx, edx
+    dec ecx
+    cmp ecx, 1
+    jnz fibo
+    jmp out
+
+one:
+    mov eax, 1
+    jmp out
+
+out:
+    PRINTF32 `%d\n\x0`, eax
     ret
