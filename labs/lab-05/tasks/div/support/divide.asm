@@ -35,6 +35,11 @@ main:
 
 
     ; TODO: Calculate quotient and remainder for 67254 / 1349.
+    mov ax, [dividend2]
+    mov dx, [dividend2 + 2]
+    div dx;
+    
+
 
     ; TODO: Calculate quotient and remainder for 69094148 / 87621.
 
