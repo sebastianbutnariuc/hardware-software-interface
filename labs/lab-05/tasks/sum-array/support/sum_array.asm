@@ -89,6 +89,6 @@ continue:
     add dword [high_bits], edx
     loop sum4
 
-    PRINTF32 `Array sum is %llu\n\x0`, [high_bits], [low_bits]
+    PRINTF32 `Array sum is %lld\n\x0`, [low_bits], [high_bits]
     leave
     ret
