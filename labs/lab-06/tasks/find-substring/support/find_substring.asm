@@ -16,6 +16,33 @@ main:
     mov ebp, esp
 
     ; TODO: Print the start indices for all occurrences of the substring in source_text
+    xor edx, edx ;bool
+    xor ecx, ecx ;parcurgere sir mare
+parcurgere:
+    mov al, [substring]
+    cmp byte [source_text + ecx], al
+    jne continue
+avem_sub:
+    inc ecx
+    cmp byte [source_text + ecx], 0
+    je afara
+    xor ebx, ebx
+    inc ebx
+    mov al, [substring + ebx]
+    cmp al, 0
+    jne mai_cauta
+    inc edx
+    PRINTF32 '%d\n\x0', ecx
+    jmp continue
+mai_cauta:
+    cmp byte [source_text + ecx], al
+    jne continue
+    jmp avem_sub
+continue:
+    inc ecx
+    cmp byte [source_text + ecx], 0
+    jne parcurgere
+afara:
 
     leave
     ret

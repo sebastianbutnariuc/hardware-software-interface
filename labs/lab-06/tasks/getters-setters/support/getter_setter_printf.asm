@@ -31,15 +31,36 @@ main:
     ; Print all three values (int_x, char_y, string_s) from sample_obj.
     ; Hint: use "lea reg, [base + offset]" to save the result of
     ; "base + offset" into register "reg".
+    PRINTF32 `int_x: %d\n\x0`, [sample_obj + int_x]
+    PRINTF32 `char_y: %c\n\x0`, [sample_obj + char_y]
+    lea eax, [sample_obj + string_s]
+    PRINTF32 `string_s: %s\n\x0`, eax
 
     ; TODO: write the equivalent of "sample_obj->int_x = new_int".
+    mov eax, [new_int]
+    mov [sample_obj + int_x], eax
 
     ; TODO: write the equivalent of "sample_obj->char_y = new_char".
+    mov al, [new_char]
+    mov [sample_obj + char_y], al
 
     ; TODO: write the equivalent of "strcpy(sample_obj->string_s, new_string)".
 
+    xor ecx, ecx
+do:
+    mov al, [new_string + ecx]
+    mov [sample_obj + string_s + ecx], al
+    inc ecx
+    cmp byte [new_string + ecx], 0
+    jne do
+
+    mov byte [sample_obj + string_s + ecx], 0
     ; TODO: print all three values again to validate the results of the
     ; three set operations above.
+    PRINTF32 `int_x: %d\n\x0`, [sample_obj + int_x]
+    PRINTF32 `char_y: %c\n\x0`, [sample_obj + char_y]
+    lea eax, [sample_obj + string_s]
+    PRINTF32 `string_s: %s\n\x0`, eax
 
     xor eax, eax
     leave
