@@ -6,10 +6,11 @@
 
 ; TODO 1: Add missing external declaration for stdin
 ; TODO 1: Change gets to fgets function.
+extern stdin
 extern printf
 extern puts
 extern strlen
-extern gets
+extern fgets
 
 
 section .data
@@ -48,9 +49,11 @@ main:
     ; TODO 2: Call fgets function instead of gets.
     ; HINT: fgets takes 3 arguments: buffer address, buffer size, and stdin.
     ; IMPORTANT: remember the order of arguments that have to be pushed.
+    push dword [stdin]
+    push 69
     push ebx
-    call gets
-    add esp, 4
+    call fgets
+    add esp, 12
 
     ; Push string length on the stack.
     ; String length is stored at ebp - 72.
