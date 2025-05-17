@@ -12,6 +12,7 @@ section .data
     byte_format: db " %02X", 0
     null_string: db 0
     var_message_and_format: db "var is 0x%08X", 13, 10, 0
+    hex_format: db "0x%08x", 10, 0
 
 section .text
 
@@ -47,6 +48,7 @@ fill_byte:
     jl fill_byte
 
     ; TODO 3: Print "DEADBEEF" instead of "CAFEBABE"
+    mov dword [ebx + 64], 0xDEADBEEF
 
     ; Text before printing buffer.
     push buffer_intro_message
@@ -72,7 +74,8 @@ print_byte:
     ; TODO 1: Print the next bytes 4
     ; TODO 2: After printing the local variable,
     ; print the next 8 bytes (What contain the next 8 bytes?)
-    cmp ecx, 64
+
+    cmp ecx, 76
     jl print_byte
 
     ; Print new line. C equivalent instruction is puts("").
