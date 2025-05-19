@@ -10,3 +10,6 @@ int get(void);
 void print_age(void);
 
 #endif
+
+extern int age;
+int hidden_value;

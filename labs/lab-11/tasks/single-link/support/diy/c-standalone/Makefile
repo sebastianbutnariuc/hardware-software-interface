@@ -1,5 +1,5 @@
-CFLAGS = -fno-PIC -m32 -g --entry=my_main
-LDFLAGS = -nostdlib -nostdinc -no-pie -m32
+CFLAGS = -fno-PIC -m32 -g
+LDFLAGS = -nostdinc -nostdlib -no-pie -m32
 AS = nasm
 ASFLAGS = -f elf32
 
@@ -7,12 +7,11 @@ ASFLAGS = -f elf32
 
 .PHONY: all clean
 
-all: hello
+all: name
 
-hello: hello.o start.o puts.o
-	$(CC) $(LDFLAGS) -o $@ $^
+name: name.o start.o puts.o
 
-hello.o: hello.c
+name.o: name.c
 
 start.o: start.asm
 	$(AS) $(ASFLAGS) -o $@ $<
